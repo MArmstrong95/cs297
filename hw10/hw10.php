@@ -38,10 +38,10 @@ CSCI 297 HW10: Student Advising Times View
 <body>
 <?php
 	// Connect to the database
-	$server = "deltona.birdnest.org";
-    $user = "my.armstrongm5";
-    $pass = "morgan0395";
-    $database = "my_armstrongm5_advising";
+	$server = ""; // edited out for security
+    $user = "";
+    $pass = "";
+    $database = "";
 
     $DBconn = new mysqli ($server, $user, $pass, $database);
     if ($DBconn->connect_error) {
@@ -67,7 +67,7 @@ CSCI 297 HW10: Student Advising Times View
                 <th align = center> $row->time </th>
 				<form method = post>
                 <th align = center>");
-			
+
 		if ($row->student == null) {
 			echo("<input type='text' name='signUpName' align='center' placeholder='Your Name'></th>
 			<th align = center>
