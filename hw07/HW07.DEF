@@ -1,0 +1,38 @@
+-- File: HW07.DEF
+-- Author: Morgan Armstrong
+-- Class: CSCI 297
+-- Date: 10/30/17
+--
+-- CREATE SCHEMA FILENAME "WAREHOUSES";
+--
+-- Create a new warehouse
+--
+INSERT INTO warehouse (whnumb, city, floors) VALUES ('WH3', 'COLUMBIA', 3);
+--
+-- Add 5 new employees
+--
+INSERT INTO employee (whnumb, empnumb, salary, yearhired) values ('WH2', 'E2', 20000, 1999);
+INSERT INTO employee (whnumb, empnumb, salary, yearhired) values ('WH2', 'E3', 27000, 2001);
+INSERT INTO employee (whnumb, empnumb, salary, yearhired) values ('WH3', 'E4', 21000, 2004);
+INSERT INTO employee (whnumb, empnumb, salary, yearhired) values ('WH3', 'E6', 28000, 2002);
+INSERT INTO employee (whnumb, empnumb, salary, yearhired) values ('WH3', 'E7', 20000, 2000);
+--
+-- Show contents of the warehouse table
+SELECT * FROM warehouse;
+--
+-- Show contents of the employee table
+SELECT * FROM employee;
+--
+-- List the employee number of each employee making $20,000
+--
+SELECT empnumb FROM employee WHERE salary = 20000;
+--
+-- List which cities have employees making over $25,000
+--
+SELECT warehouse.city FROM warehouse JOIN employee ON warehouse.whnumb = employee.whnumb AND employee.salary > 25000 GROUP BY warehouse.city;
+--
+-- List what the total payroll of the charlotte warehouse is
+--
+SELECT sum(employee.salary) AS 'Charlotte Payroll' FROM warehouse, employee WHERE warehouse.city = 'charlotte';
+--
+-- end of source
